@@ -19,8 +19,8 @@ Two Main Gameplay Aspects:
 
 # TODO
 
-- [ ] Setup Template
-- [ ] Setup CI / CD
+- [x] Setup Template
+- [x] Setup CI / CD
 - [ ] Element
 - [ ] Grid
 - [ ] Line

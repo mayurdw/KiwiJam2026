@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://da00hutaakwk6"]
 
 [ext_resource type="Script" uid="uid://qi4qdfy4cte8" path="res://scenes/game_scene/levels/level.gd" id="1_623lg"]
-[ext_resource type="Script" uid="uid://1nf36h0gms3q" path="res://addons/maaacks_game_template/base/nodes/utilities/capture_focus.gd" id="2_sycfm"]
-[ext_resource type="Script" uid="uid://ch8aaykixbwn5" path="res://scenes/game_scene/input_display_label.gd" id="3_pmyid"]
+[ext_resource type="PackedScene" uid="uid://dctd868bn0xgw" path="res://scenes/game_scene/levels/grid_container.tscn" id="2_w6i3l"]
 [ext_resource type="Script" uid="uid://bll85ag2um7hl" path="res://scenes/game_scene/tutorial_manager.gd" id="4_bsimd"]
 [ext_resource type="PackedScene" uid="uid://ks83y4cfd5a5" path="res://scenes/game_scene/tutorials/tutorial_1.tscn" id="5_fmabn"]
 
@@ -38,64 +37,136 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1666223033]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1258901969]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1666223033]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=153752389]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=153752389]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Example Level #1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=366526319]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=366526319]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1739305807]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1240237362]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 32
-script = ExtResource("2_sycfm")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="LoseButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=479791323]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Lose"
-
-[node name="WinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=177671711]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Win"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=420490874]
+[node name="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=248420282 instance=ExtResource("2_w6i3l")]
 layout_mode = 2
 
-[node name="TutorialButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=263503015]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=420490874]
+layout_mode = 2
+
+[node name="TutorialButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=263503015]
 layout_mode = 2
 text = "Tutorial"
 
-[node name="InputDisplayLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=829190659]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=850561156]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2080656311]
 layout_mode = 2
 size_flags_horizontal = 3
-horizontal_alignment = 1
-script = ExtResource("3_pmyid")
+size_flags_stretch_ratio = 0.5
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=111486398]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1261258734]
 layout_mode = 2
-text = "Change Level Color: "
+size_flags_vertical = 0
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=455800800]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer" unique_id=17075323]
 layout_mode = 2
-text = "Change Color"
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Goal Container" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer" unique_id=285388293]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/Goal Container" unique_id=693083116]
+layout_mode = 2
+text = "Goal"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/Goal Container" unique_id=2110952374]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/Goal Container" unique_id=788707534]
+layout_mode = 2
+text = "To get driver's license"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1593541587]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer" unique_id=1283921416]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 32
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer" unique_id=128751045]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2" unique_id=1546118589]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Current Container" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1685438552]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/Current Container" unique_id=396243529]
+layout_mode = 2
+text = "Current"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/Current Container" unique_id=1378154174]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/Current Container" unique_id=471854562]
+layout_mode = 2
+text = "1. Online Application"
+
+[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer" unique_id=1177198913]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3" unique_id=1013989574]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Current Container" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer" unique_id=1396623052]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/Current Container" unique_id=1296914000]
+layout_mode = 2
+text = "Next"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/Current Container" unique_id=1712499982]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/Current Container" unique_id=546306664]
+layout_mode = 2
+text = "2. Requires Identity Proof"
 
 [node name="TutorialManager" type="Node" parent="." unique_id=448883273]
 unique_name_in_owner = true
 script = ExtResource("4_bsimd")
 tutorial_scenes = Array[PackedScene]([ExtResource("5_fmabn")])
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/LoseButton" to="." method="_on_lose_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/WinButton" to="." method="_on_win_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="color_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TutorialButton" to="." method="_on_tutorial_button_pressed"]
