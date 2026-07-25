@@ -14,6 +14,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_623lg")
 next_level_path = "res://scenes/game_scene/levels/level_2.tscn"
+tasks = Array[String](["A", "B", "C", "D", "E", "F", "G", "H", "I"])
+aim = "Get a drivers license"
 
 [node name="BackgroundColor" type="ColorRect" parent="." unique_id=488494201]
 unique_name_in_owner = true
@@ -63,7 +65,7 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=248420282 instance=ExtResource("2_w6i3l")]
+[node name="ElementHandler" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=248420282 instance=ExtResource("2_w6i3l")]
 layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=420490874]
@@ -102,7 +104,7 @@ text = "Goal"
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/Goal Container" unique_id=2110952374]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/Goal Container" unique_id=788707534]
+[node name="Goal" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/PanelContainer/MarginContainer/Goal Container" unique_id=788707534]
 layout_mode = 2
 text = "To get driver's license"
 
@@ -136,7 +138,7 @@ text = "Current"
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/Current Container" unique_id=1378154174]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/Current Container" unique_id=471854562]
+[node name="Current Task" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer2/MarginContainer/Current Container" unique_id=471854562]
 layout_mode = 2
 text = "1. Online Application"
 
@@ -160,7 +162,7 @@ text = "Next"
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/Current Container" unique_id=1712499982]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/Current Container" unique_id=546306664]
+[node name="Next Task" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer/PanelContainer3/MarginContainer/Current Container" unique_id=546306664]
 layout_mode = 2
 text = "2. Requires Identity Proof"
 
@@ -169,4 +171,5 @@ unique_name_in_owner = true
 script = ExtResource("4_bsimd")
 tutorial_scenes = Array[PackedScene]([ExtResource("5_fmabn")])
 
+[connection signal="button_pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/ElementHandler" to="." method="_on_grid_container_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2/TutorialButton" to="." method="_on_tutorial_button_pressed"]

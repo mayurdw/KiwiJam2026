@@ -5,6 +5,8 @@ class_name ElementHandler
 
 var indices : Array[int] = []
 
+signal button_pressed(current_value: int, new_line_position: Vector2)
+
 func _ready() -> void:
 	var maxValue = range(0, columns * columns)
 	var ids = maxValue.duplicate(true)
@@ -33,3 +35,4 @@ func _on_button_selected(id: String) -> void:
 		var child_element : Element = get_children().get(index)
 
 		child_element.setButtonState(Element.ElementState.ACTIVE)
+		button_pressed.emit(id_int, child_element.button_pin.global_position)
