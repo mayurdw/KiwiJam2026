@@ -1,7 +1,7 @@
 extends GridContainer
 class_name ElementHandler
 
-@export var cardScene: PackedScene = preload("res://scenes/game_scene/levels/element.tscn")
+@export var cardScene: PackedScene = preload("res://scenes/game_scene/levels/components/element.tscn")
 
 var indices : Array[int] = []
 
