@@ -6,7 +6,6 @@ enum ElementState {
 	START,
 	ACTIVE,
 	SELECTED,
-	COMPLETED
 }
 
 signal button_selected(id: String)
@@ -16,6 +15,9 @@ var id: String = ""
 
 @onready var label: Label = $MarginContainer/VBoxContainer/Label
 @onready var button_pin: TextureRect = $MarginContainer/VBoxContainer/ButtonPin
+@onready var click: AudioStreamPlayer2D = $Click
+@onready var error: AudioStreamPlayer2D = $Error
+@onready var drop: AudioStreamPlayer2D = $Drop
 
 func _ready() -> void:
 	setButtonState(elementState)
@@ -33,6 +35,7 @@ func setButtonState(state: ElementState):
 			button_pin.visible = true
 			label.visible = true
 		ElementState.SELECTED:
+			play_click()
 			button_pressed = true
 			button_selected.emit(id)
 	
@@ -41,11 +44,27 @@ func setButtonState(state: ElementState):
 
 func _on_toggled(_toggled_on: bool) -> void:
 	match elementState:
-		ElementState.COMPLETED:
-			return
 		ElementState.HIDDEN:
 			button_pressed = false
+			play_error()
 		ElementState.START, ElementState.ACTIVE:
 			setButtonState(ElementState.SELECTED)
 		ElementState.SELECTED:
-			setButtonState(ElementState.ACTIVE if id != "0" else ElementState.START)
+			button_pressed = true
+
+func play_error() -> void:
+	error.pitch_scale = randf_range(0.8, 1.2)
+	error.play()
+
+func play_click() -> void:
+	click.pitch_scale = randf_range(0.8, 1.2)
+	click.play()
+
+func play_drop() -> void:
+	drop.pitch_scale = randf_range(0.8, 1.2)
+	drop.play()
+
+func drop_element() -> void:
+	play_drop()
+	visible = false
+	call_deferred("queue_free")

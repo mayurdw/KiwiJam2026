@@ -44,11 +44,13 @@ func _on_button_selected(id: String) -> void:
 
 func clear_grid() -> void:
 	var child_count : int = get_child_count()
-	for id : Element in get_children():
-		if child_count > 1:
-			button_removed.emit(child_count)
-			child_count -= 1
-			id.queue_free()
-			if columns > child_count:
-				columns = child_count
-			await get_tree().create_timer(0.3).timeout
+	for i in range((columns * columns) - 1, 0, -1):
+		var index = indices.find(i + 1)
+		var id : Element = get_children().get(index)
+		button_removed.emit(child_count)
+		child_count -= 1
+		id.drop_element()
+		indices.remove_at(index)
+		if columns > child_count:
+			columns = child_count
+		await get_tree().create_timer(0.3).timeout

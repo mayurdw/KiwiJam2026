@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" format=3 uid="uid://cjxa35kph5yoy"]
+
+[ext_resource type="FontFile" uid="uid://djqsytgi720q3" path="res://assets/fonts/Outfit-Medium.ttf" id="1_88c5i"]
+
+[resource]
+font = ExtResource("1_88c5i")
+font_color = Color(0.87058824, 0.8901961, 0.90588236, 1)
+outline_size = 2
+outline_color = Color(0.1254902, 0.6392157, 0.61960787, 1)

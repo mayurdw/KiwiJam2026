@@ -17,7 +17,7 @@ signal level_changed(level_path : String)
 @onready var goal: Label = $"VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3/Goal"
 @onready var current_task: Label = $"VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4/Current Task"
 @onready var next_task: Label = $"VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5/Next Task"
-@onready var label: Label = $VBoxContainer/MarginContainer2/HBoxContainer/Label
+@onready var label: Label = $VBoxContainer/MarginContainer2/HBoxContainer/PanelContainer/MarginContainer/Label
 @onready var progress_bar: ProgressBar = $VBoxContainer/MarginContainer2/HBoxContainer/ProgressBar
 @onready var thread: Line2D = $Thread
 @onready var timer: Timer = $Timer
@@ -44,8 +44,9 @@ func _ready() -> void:
 	current_task.text = aim
 	next_task.text = aim
 	timer.start()
+	remaining_time_sec += level_state.carry_over_time
 	label.text = "%d:%d" % [ remaining_time_sec / 60, remaining_time_sec % 60]
-	progress_bar.max_value = remaining_time_sec + level_state.carry_over_time
+	progress_bar.max_value = remaining_time_sec
 	progress_bar.value = progress_bar.max_value
 
 func _complete_level() -> void:
@@ -78,9 +79,8 @@ func _on_timer_timeout() -> void:
 	else:
 		print("Time Remaining %d" % remaining_time_sec)
 		progress_bar.value = remaining_time_sec
-		label.text = "0:%d" % remaining_time_sec
+		label.text = "%d:%d" % [remaining_time_sec / 60, remaining_time_sec % 60]
 		timer.start()
-
 
 func _on_element_handler_button_removed(removed_value: int) -> void:
 	print("Got value to remove %d" % removed_value)
