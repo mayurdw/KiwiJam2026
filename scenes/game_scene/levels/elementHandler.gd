@@ -28,7 +28,7 @@ func _on_button_selected(id: String) -> void:
 	print("Button selected on id = %s" % id)
 	var id_int: int = id.to_int()
 
-	if id_int in range(1, (columns * columns) + 1):
+	if id_int in range(1, columns * columns):
 		var index = indices.find(id_int + 1)
 		var child_element : Element = get_children().get(index)
 
