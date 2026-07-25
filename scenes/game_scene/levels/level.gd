@@ -68,7 +68,7 @@ func _on_grid_container_button_pressed(current_value: int, current_position: Vec
 	
 func _add_points(new_point: Vector2):
 	if thread.points.size() > 0:
-		create_tween().tween_method(thread.add_point, thread.points.get(thread.points.size() - 1), new_point, 0.2)
+		create_tween().tween_method(thread.add_point, thread.points.get(thread.points.size() - 1), new_point, 0.1)
 	else:
 		thread.add_point(new_point)
 

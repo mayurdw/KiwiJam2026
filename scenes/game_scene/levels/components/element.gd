@@ -66,5 +66,6 @@ func play_drop() -> void:
 
 func drop_element() -> void:
 	play_drop()
+	await drop.finished
 	visible = false
 	call_deferred("queue_free")
