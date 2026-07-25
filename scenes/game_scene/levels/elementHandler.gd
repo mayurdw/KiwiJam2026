@@ -5,7 +5,7 @@ class_name ElementHandler
 
 var indices : Array[int] = []
 
-signal button_pressed(current_value: int, new_line_position: Vector2)
+signal button_pressed(current_value: int, current_line_position: Vector2)
 
 func _ready() -> void:
 	var maxValue = range(0, columns * columns)
@@ -32,7 +32,9 @@ func _on_button_selected(id: String) -> void:
 
 	if id_int in range(1, columns * columns):
 		var index = indices.find(id_int + 1)
+		var current_child = indices.find(id_int)
 		var child_element : Element = get_children().get(index)
+		var current_positon: Vector2 = get_children().get(current_child).button_pin.global_position
 
 		child_element.setButtonState(Element.ElementState.ACTIVE)
-		button_pressed.emit(id_int, child_element.button_pin.global_position)
+		button_pressed.emit(id_int, current_positon)
