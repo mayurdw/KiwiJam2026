@@ -44,9 +44,16 @@ func _ready() -> void:
 func _on_tutorial_button_pressed() -> void:
 	open_tutorials()
 
+func _complete_level() -> void:
+	$AnimationPlayer.play("goal_achieved")
+	level_won.emit()
+
 func _on_grid_container_button_pressed(current_value: int, current_position: Vector2) -> void:
 	print("Got new value = %d, current_position = [%f, %f]" % [current_value, current_position.x, current_position.y])
-	if current_value in range(1, tasks.size()):
+
+	if current_value == tasks.size():
+		_complete_level()
+	elif current_value in range(1, tasks.size()):
 		index += 1
 		current_task.text = "%d. %s" % [ index, tasks[index - 1] ]
 		next_task.text = "%d. %s" % [ index + 1, tasks[index] ]

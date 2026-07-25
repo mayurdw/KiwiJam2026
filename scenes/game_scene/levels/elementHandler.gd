@@ -27,14 +27,16 @@ func _ready() -> void:
 		add_child(instance)
 
 func _on_button_selected(id: String) -> void:
-	print("Button selected on id = %s" % id)
 	var id_int: int = id.to_int()
 
-	if id_int in range(1, columns * columns):
-		var index = indices.find(id_int + 1)
-		var current_child = indices.find(id_int)
-		var child_element : Element = get_children().get(index)
-		var current_positon: Vector2 = get_children().get(current_child).button_pin.global_position
+	if id_int in range(1, (columns * columns) + 1):
+		var next_id = indices.find(id_int + 1)
+		var current_id = indices.find(id_int)
+		var current_positon: Vector2 = get_children().get(current_id).button_pin.global_position
 
-		child_element.setButtonState(Element.ElementState.ACTIVE)
+		if not next_id < 0:
+			var child_element : Element = get_children().get(next_id)
+			child_element.setButtonState(Element.ElementState.ACTIVE)
+
 		button_pressed.emit(id_int, current_positon)
+		print("Emitting signal with id = [%d] and current_positon = [%f, %f]" % [ id_int, current_positon.x, current_positon.y])
