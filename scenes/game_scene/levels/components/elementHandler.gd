@@ -5,7 +5,8 @@ class_name ElementHandler
 
 var indices : Array[int] = []
 
-signal button_pressed(current_value: int, current_line_position: Vector2)
+signal button_pressed(current_value: int)
+signal button_removed(removed_value: int, removed_position: Vector2)
 
 func _ready() -> void:
 	var maxValue = range(0, columns * columns)
@@ -40,3 +41,14 @@ func _on_button_selected(id: String) -> void:
 
 		button_pressed.emit(id_int, current_positon)
 		print("Emitting signal with id = [%d] and current_positon = [%f, %f]" % [ id_int, current_positon.x, current_positon.y])
+
+func clear_grid() -> void:
+	var child_count : int = get_child_count()
+	for id : Element in get_children():
+		if child_count > 1:
+			button_removed.emit(child_count)
+			child_count -= 1
+			id.queue_free()
+			if columns > child_count:
+				columns = child_count
+			await get_tree().create_timer(0.3).timeout

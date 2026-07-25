@@ -3,7 +3,22 @@
 [ext_resource type="Script" uid="uid://qi4qdfy4cte8" path="res://scenes/game_scene/levels/level.gd" id="1_623lg"]
 [ext_resource type="PackedScene" uid="uid://dctd868bn0xgw" path="res://scenes/game_scene/levels/components/ElementHandler.tscn" id="2_w6i3l"]
 [ext_resource type="Script" uid="uid://bll85ag2um7hl" path="res://scenes/game_scene/tutorial_manager.gd" id="4_bsimd"]
+[ext_resource type="Shader" uid="uid://cvgexyohx3v6f" path="res://scripts/line_2d_shader.gdshader" id="5_623lg"]
 [ext_resource type="PackedScene" uid="uid://ks83y4cfd5a5" path="res://scenes/game_scene/tutorials/tutorial_1.tscn" id="5_fmabn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sycfm"]
+shader = ExtResource("5_623lg")
+shader_parameter/frequency = 100.0
+shader_parameter/amplitude = 1000.0
+shader_parameter/speed = 10.0
+shader_parameter/direction = 1.0
+shader_parameter/color1 = Color(0.9320899, 0, 0.23227748, 1)
+shader_parameter/color2 = Color(1, 0.7294118, 0.28627452, 1)
+shader_parameter/opacity = 1.0
+
+[sub_resource type="Curve" id="Curve_pmyid"]
+_data = [Vector2(0, 0.9527777), 0.0, 0.0, 0, 0, Vector2(1, 0.6666666), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Level1" type="Control" unique_id=266725257]
 layout_mode = 3
@@ -198,9 +213,14 @@ script = ExtResource("4_bsimd")
 tutorial_scenes = Array[PackedScene]([ExtResource("5_fmabn")])
 
 [node name="Thread" type="Line2D" parent="." unique_id=1364888161]
+material = SubResource("ShaderMaterial_sycfm")
+width_curve = SubResource("Curve_pmyid")
+default_color = Color(1, 0.7294118, 0.28627452, 1)
+texture_mode = 2
 
 [node name="Timer" type="Timer" parent="." unique_id=1029648670]
 one_shot = true
 
 [connection signal="button_pressed" from="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/ElementHandler" to="." method="_on_grid_container_button_pressed"]
+[connection signal="button_removed" from="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/ElementHandler" to="." method="_on_element_handler_button_removed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

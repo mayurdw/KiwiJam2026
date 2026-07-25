@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cghq4walkxvc6"]
+
+[ext_resource type="Script" path="res://scenes/game_scene/levels/components/thread.gd" id="1_yov5j"]
+
+[node name="Connector" type="Line2D" unique_id=535022058]
+script = ExtResource("1_yov5j")

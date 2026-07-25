@@ -50,6 +50,7 @@ func _ready() -> void:
 
 func _complete_level() -> void:
 	timer.stop()
+	element_handler.clear_grid()
 	level_state.carry_over_time = remaining_time_sec
 	level_won.emit()
 
@@ -62,14 +63,13 @@ func _on_grid_container_button_pressed(current_value: int, current_position: Vec
 		index += 1
 		current_task.text = "%d. %s" % [ index, tasks[index - 1] ]
 		next_task.text = "%d. %s" % [ index + 1, tasks[index] ]
+	_add_points(current_position)
 	
-	var points: PackedVector2Array = thread.points.duplicate()
-
-	if not current_position in thread.points:
-		points.append(current_position)
-
-	thread.points = points
-
+func _add_points(new_point: Vector2):
+	if thread.points.size() > 0:
+		create_tween().tween_method(thread.add_point, thread.points.get(thread.points.size() - 1), new_point, 0.2)
+	else:
+		thread.add_point(new_point)
 
 func _on_timer_timeout() -> void:
 	remaining_time_sec -= 1
@@ -80,3 +80,9 @@ func _on_timer_timeout() -> void:
 		progress_bar.value = remaining_time_sec
 		label.text = "0:%d" % remaining_time_sec
 		timer.start()
+
+
+func _on_element_handler_button_removed(removed_value: int) -> void:
+	print("Got value to remove %d" % removed_value)
+	
+	thread.clear_points()

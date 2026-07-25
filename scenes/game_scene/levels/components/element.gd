@@ -5,7 +5,8 @@ enum ElementState {
 	HIDDEN,
 	START,
 	ACTIVE,
-	SELECTED
+	SELECTED,
+	COMPLETED
 }
 
 signal button_selected(id: String)
@@ -40,6 +41,8 @@ func setButtonState(state: ElementState):
 
 func _on_toggled(_toggled_on: bool) -> void:
 	match elementState:
+		ElementState.COMPLETED:
+			return
 		ElementState.HIDDEN:
 			button_pressed = false
 		ElementState.START, ElementState.ACTIVE:
