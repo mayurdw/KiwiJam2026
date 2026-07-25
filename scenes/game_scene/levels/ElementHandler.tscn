@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dctd868bn0xgw"]
+
+[ext_resource type="Script" uid="uid://6hjfl577gbf6" path="res://scenes/game_scene/levels/elementHandler.gd" id="1_1xx7a"]
+
+[node name="ElementHandler" type="GridContainer" unique_id=248420282]
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+script = ExtResource("1_1xx7a")

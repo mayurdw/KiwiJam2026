@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cjeaqddjpexkd"]
 
+[ext_resource type="Script" uid="uid://bajdriwdfalna" path="res://scenes/game_scene/levels/element.gd" id="1_c81px"]
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6kdqg"]
 size = Vector2(32, 32)
 
@@ -12,17 +14,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 toggle_mode = true
-flat = true
+script = ExtResource("1_c81px")
 
-[node name="Panel" type="Panel" parent="." unique_id=1034933132]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1021849267]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1021849267]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,20 +28,22 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=2033265159]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2033265159]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=2105506154]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2105506154]
 layout_mode = 2
 size_flags_vertical = 3
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=259837477]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=259837477]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer" unique_id=585707223]
+[node name="ButtonPin" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=585707223]
 layout_mode = 2
 size_flags_horizontal = 8
 texture = SubResource("PlaceholderTexture2D_6kdqg")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]
