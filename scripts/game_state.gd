@@ -31,10 +31,7 @@ static func get_or_create_state() -> GameState:
 	return GlobalState.get_or_create_state(STATE_NAME, FILE_PATH)
 
 static func get_current_level_path() -> String:
-	if not has_game_state(): 
-		return ""
-	var game_state := get_or_create_state()
-	return game_state.current_level_path
+	return ""
 
 static func get_checkpoint_level_path() -> String:
 	if not has_game_state(): 
