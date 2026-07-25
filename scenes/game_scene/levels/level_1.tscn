@@ -27,138 +27,178 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1909364306]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1269349753]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=37024834]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1258901969]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2" unique_id=1639618798]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1666223033]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer2/HBoxContainer" unique_id=117491748]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 16
+size_flags_vertical = 1
+theme_override_constants/outline_size = 8
+max_value = 60.0
+step = 1.0
+value = 30.0
+show_percentage = false
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=153752389]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/HBoxContainer" unique_id=1850115744]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Example Level #1"
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+text = "1:00"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=366526319]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1909364306]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=1258901969]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1666223033]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=366526319]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1240237362]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=239109771]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1240237362]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ElementHandler" parent="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=248420282 instance=ExtResource("2_w6i3l")]
+[node name="ElementHandler" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=248420282 instance=ExtResource("2_w6i3l")]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=850561156]
-visible = false
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=850561156]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
 
-[node name="Task Sidebar" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=2080656311]
-visible = false
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer" unique_id=1279765255]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="Task Sidebar" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2" unique_id=2080656311]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
-[node name="Goal Container" type="PanelContainer" parent="MarginContainer/HBoxContainer/Task Sidebar" unique_id=1261258734]
+[node name="Goal Container" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar" unique_id=1261258734]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/Goal Container" unique_id=17075323]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container" unique_id=17075323]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/Goal Container/MarginContainer" unique_id=285388293]
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer" unique_id=285388293]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=693083116]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=693083116]
 layout_mode = 2
 text = "Goal"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=2110952374]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=2110952374]
 layout_mode = 2
 
-[node name="Goal" type="Label" parent="MarginContainer/HBoxContainer/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=788707534]
+[node name="Goal" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=788707534]
 layout_mode = 2
 text = "To get driver's license"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Task Sidebar" unique_id=1593541587]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar" unique_id=1593541587]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_bottom = 32
 
-[node name="Tasks Container" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer" unique_id=1283921416]
-visible = false
+[node name="Tasks Container" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer" unique_id=1283921416]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 32
 
-[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container" unique_id=128751045]
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container" unique_id=128751045]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2" unique_id=1546118589]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2" unique_id=1546118589]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer" unique_id=1685438552]
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer" unique_id=1685438552]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=396243529]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=396243529]
 layout_mode = 2
 text = "Current"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=1378154174]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=1378154174]
 layout_mode = 2
 
-[node name="Current Task" type="Label" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=471854562]
+[node name="Current Task" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=471854562]
 layout_mode = 2
 text = "1. Online Application"
 
-[node name="PanelContainer3" type="PanelContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container" unique_id=1177198913]
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container" unique_id=1177198913]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3" unique_id=1013989574]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3" unique_id=1013989574]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer" unique_id=1396623052]
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer" unique_id=1396623052]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=1296914000]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=1296914000]
 layout_mode = 2
 text = "Next"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=1712499982]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=1712499982]
 layout_mode = 2
 
-[node name="Next Task" type="Label" parent="MarginContainer/HBoxContainer/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=546306664]
+[node name="Next Task" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=546306664]
 layout_mode = 2
 text = "2. Requires Identity Proof"
 
@@ -169,4 +209,8 @@ tutorial_scenes = Array[PackedScene]([ExtResource("5_fmabn")])
 
 [node name="Thread" type="Line2D" parent="." unique_id=1364888161]
 
-[connection signal="button_pressed" from="MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/ElementHandler" to="." method="_on_grid_container_button_pressed"]
+[node name="Timer" type="Timer" parent="." unique_id=1029648670]
+one_shot = true
+
+[connection signal="button_pressed" from="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/ElementHandler" to="." method="_on_grid_container_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
