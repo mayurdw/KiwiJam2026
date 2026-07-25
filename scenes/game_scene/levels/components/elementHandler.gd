@@ -42,15 +42,13 @@ func _on_button_selected(id: String) -> void:
 		button_pressed.emit(id_int, current_positon)
 		print("Emitting signal with id = [%d] and current_positon = [%f, %f]" % [ id_int, current_positon.x, current_positon.y])
 
-func clear_grid() -> void:
+func clear_last_child() -> void:
 	var child_count : int = get_child_count()
-	for i in range((columns * columns) - 1, 0, -1):
-		var index = indices.find(i + 1)
+	if child_count > 1:
+		var index = indices.find(child_count)
 		var id : Element = get_children().get(index)
 		button_removed.emit(child_count)
-		child_count -= 1
-		id.drop_element()
+		if id != null:
+			id.drop_element()
 		indices.remove_at(index)
-		if columns > child_count:
-			columns = child_count
-		await get_tree().create_timer(0.3).timeout
+		columns = min(child_count - 1, columns)

@@ -33,7 +33,6 @@ func _on_win_button_pressed() -> void:
 func open_tutorials() -> void:
 	%TutorialManager.open_tutorials()
 	level_state.tutorial_read = true
-	GlobalState.save()
 
 func _ready() -> void:
 	level_state = GameState.get_level_state(scene_file_path)
@@ -44,15 +43,19 @@ func _ready() -> void:
 	current_task.text = aim
 	next_task.text = aim
 	timer.start()
-	remaining_time_sec += level_state.carry_over_time
 	label.text = "%d:%d" % [ remaining_time_sec / 60, remaining_time_sec % 60]
 	progress_bar.max_value = remaining_time_sec
 	progress_bar.value = progress_bar.max_value
 
 func _complete_level() -> void:
+	var timeout : float = 0.3
 	timer.stop()
-	element_handler.clear_grid()
-	level_state.carry_over_time = remaining_time_sec
+
+	for i in range(1, tasks.size()):
+		element_handler.clear_last_child()
+		await get_tree().create_timer(timeout).timeout
+		if timeout > 0.05:
+			timeout -= 0.01
 	level_won.emit()
 
 func _on_grid_container_button_pressed(current_value: int, current_position: Vector2) -> void:

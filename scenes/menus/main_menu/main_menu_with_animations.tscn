@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dnaejbfe1nvn1" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_vsp5b"]
 [ext_resource type="LabelSettings" uid="uid://dpjel1x877pqc" path="res://resources/labels/headline.tres" id="5_2k5l7"]
 [ext_resource type="PackedScene" uid="uid://cwt4p3bufkke5" path="res://addons/maaacks_game_template/base/nodes/windows/confirmation_overlaid_window.tscn" id="5_6xh1d"]
+[ext_resource type="AudioStream" uid="uid://de5mpog7f6yxj" path="res://assets/sounds/Wacky Waiting.ogg" id="5_dhrx6"]
 [ext_resource type="LabelSettings" uid="uid://by86ofo2kbseb" path="res://resources/labels/subheading.tres" id="6_vsp5b"]
+[ext_resource type="AudioStream" uid="uid://cnrn575s1ij8p" path="res://assets/sounds/Farm Frolics.ogg" id="6_xkrf4"]
+[ext_resource type="LabelSettings" uid="uid://d0vululcgj74p" path="res://resources/labels/tasks.tres" id="9_x5bcm"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -316,6 +319,12 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_n4y2n"]
+shuffle = true
+stream_count = 2
+stream_0 = ExtResource("5_dhrx6")
+stream_1 = ExtResource("6_xkrf4")
+
 [node name="MainMenu" unique_id=455022277 instance=ExtResource("1_sr523")]
 script = ExtResource("2_ixa71")
 level_select_packed_scene = null
@@ -331,16 +340,21 @@ tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
+[node name="BackgroundMusicPlayer" parent="." index="3" unique_id=1141822549]
+stream = SubResource("AudioStreamPlaylist_n4y2n")
+
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" parent_id_path=PackedInt32Array(2112060331) index="0" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0" unique_id=359406872]
+text = "Entangled"
 label_settings = ExtResource("5_2k5l7")
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" parent_id_path=PackedInt32Array(1510335937) index="0" unique_id=930520368]
 modulate = Color(1, 1, 1, 0)
 
 [node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0" unique_id=1037003361]
+text = "Nothing is ever easy"
 label_settings = ExtResource("6_vsp5b")
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(210553886) index="0" unique_id=116448484]
@@ -363,6 +377,10 @@ text = "Level Select"
 
 [node name="VersionContainer" parent="VersionMargin" parent_id_path=PackedInt32Array(1732528471) index="0" unique_id=1603969262]
 modulate = Color(1, 1, 1, 0)
+
+[node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0" unique_id=793266470]
+text = "v1.0.0"
+label_settings = ExtResource("9_x5bcm")
 
 [node name="NewGameConfirmation" parent="." index="7" unique_id=291913255 instance=ExtResource("5_6xh1d")]
 unique_name_in_owner = true
