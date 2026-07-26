@@ -1,14 +1,115 @@
 [gd_scene format=3 uid="uid://cjeaqddjpexkd"]
 
 [ext_resource type="Script" uid="uid://bajdriwdfalna" path="res://scenes/game_scene/levels/components/element.gd" id="1_c81px"]
+[ext_resource type="Shader" uid="uid://diffoi5oca3cn" path="res://scripts/bounce_shader.gdshader" id="1_iwssk"]
 [ext_resource type="LabelSettings" uid="uid://dpjel1x877pqc" path="res://resources/labels/headline.tres" id="2_lpxqh"]
 [ext_resource type="AudioStream" uid="uid://bq5muxma8m4w1" path="res://assets/sounds/pickup1.ogg" id="3_iwssk"]
 [ext_resource type="AudioStream" uid="uid://bwfjn7wbjtn7y" path="res://assets/sounds/error_005.ogg" id="4_y7ncd"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwssk"]
+resource_local_to_scene = true
+shader = ExtResource("1_iwssk")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(1, 0)
+shader_parameter/sine_speed = Vector2(1, 0)
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6kdqg"]
 size = Vector2(32, 32)
 
+[sub_resource type="Animation" id="Animation_y7ncd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/sine_amplitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/sine_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_f3kfr"]
+resource_name = "burst"
+length = 0.16667000869251786
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/sine_amplitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16667001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(50, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/sine_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16667001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(50, 50)]
+}
+
+[sub_resource type="Animation" id="Animation_iwssk"]
+resource_name = "select"
+length = 0.33333668405152855
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/sine_amplitude")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16629958, 0.3330108),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 10), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/sine_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16712286, 0.3330108),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 100), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y7ncd"]
+_data = {
+&"RESET": SubResource("Animation_y7ncd"),
+&"burst": SubResource("Animation_f3kfr"),
+&"select": SubResource("Animation_iwssk")
+}
+
 [node name="WinButton" type="Button" unique_id=2043396464]
+material = SubResource("ShaderMaterial_iwssk")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,5 +156,8 @@ bus = &"SFX"
 [node name="Error" type="AudioStreamPlayer2D" parent="." unique_id=1399944732]
 stream = ExtResource("4_y7ncd")
 bus = &"SFX"
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=847602587]
+libraries/ = SubResource("AnimationLibrary_y7ncd")
 
 [connection signal="toggled" from="." to="." method="_on_toggled"]

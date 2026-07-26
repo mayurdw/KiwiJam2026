@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cr11u6cmjcy2d"]
+
+[ext_resource type="Shader" uid="uid://diffoi5oca3cn" path="res://scripts/bounce_shader.gdshader" id="1_rv1ma"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_rv1ma")
+shader_parameter/do_abs = false
+shader_parameter/do_quantize = false
+shader_parameter/quantize_to = 1.0
+shader_parameter/sine_amplitude = Vector2(1, 0)
+shader_parameter/sine_speed = Vector2(1, 0)

@@ -17,6 +17,7 @@ var id: String = ""
 @onready var button_pin: TextureRect = $MarginContainer/VBoxContainer/ButtonPin
 @onready var click: AudioStreamPlayer2D = $Click
 @onready var error: AudioStreamPlayer2D = $Error
+@onready var animator: AnimationPlayer = $Animator
 
 func _ready() -> void:
 	setButtonState(elementState)
@@ -36,6 +37,7 @@ func setButtonState(state: ElementState):
 		ElementState.SELECTED:
 			play_click()
 			button_pressed = true
+			animator.play("select")
 			button_selected.emit(id)
 	
 	elementState = state
@@ -60,5 +62,7 @@ func play_click() -> void:
 	click.play()
 
 func drop_element() -> void:
+	animator.play("burst")
+	await animator.animation_finished
 	visible = false
 	call_deferred("queue_free")
