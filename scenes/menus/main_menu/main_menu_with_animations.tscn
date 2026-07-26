@@ -347,7 +347,6 @@ stream = SubResource("AudioStreamPlaylist_n4y2n")
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0" unique_id=359406872]
-text = "Entangled"
 label_settings = ExtResource("5_2k5l7")
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" parent_id_path=PackedInt32Array(1510335937) index="0" unique_id=930520368]
