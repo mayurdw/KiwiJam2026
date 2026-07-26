@@ -390,6 +390,7 @@ offset_left = -210.0
 offset_top = -100.0
 offset_right = 210.0
 offset_bottom = 100.0
+ignore_siblings = false
 title = "New Game"
 text = "Are you sure you want to start a new game?
 

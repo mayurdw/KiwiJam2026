@@ -42,6 +42,7 @@ script = ExtResource("1_623lg")
 next_level_path = "res://scenes/game_scene/levels/level_2.tscn"
 tasks = Array[String](["Get a drivers license", "You need an identity proof", "Oops, wrong identity proof. You need another document", "Identity verified. But wait, you need to get an eye exam.", "Your eyes are fine. Go to the test center.", "Aw shucks, IT issue. Can't process applications.", "Application processed. Time to sit the exam.", "You failed you fool! Come back in two weeks.", "You passed!!"])
 aim = "Get a drivers license"
+remaining_time_sec = 30
 
 [node name="BackgroundTextureRect" parent="." unique_id=2051226168 instance=ExtResource("2_bsimd")]
 layout_mode = 1

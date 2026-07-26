@@ -41,6 +41,7 @@ script = ExtResource("1_yh8gr")
 next_level_path = "res://scenes/game_scene/levels/level_2.tscn"
 tasks = Array[String](["Renew your visa", "Your passport is expired. ", "Apply for new passport but you need police clearance.", "You never want to deal with police ever again. You submit your passport application.", "You got your passport but government has changed the visa rules. ", "You need a new medical exam.", "You have to wait two months for a medical. That's too long.", "You found an earlier date but you need to travel two hours to get there.", "Exam done but they found something in your X-Ray. ", "More tests, another two weeks but they issued your medical certificate.", "Your police clearance is expired. You need to do it again.", "You hope you got everything as you submit your application.", "They need to contact your employer. But your HR is on leave for another week.", "HR has responded to Immigration. ", "More visa changes announced. Hopefully it doesn't invalidate your application.", "It didn't. You got your visa."])
 aim = "Renew your visa"
+remaining_time_sec = 120
 
 [node name="BackgroundTextureRect" parent="." unique_id=2051226168 instance=ExtResource("2_urmku")]
 layout_mode = 1
