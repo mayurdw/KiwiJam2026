@@ -8,7 +8,7 @@ var indices : Array[int] = []
 signal button_pressed(current_value: int)
 signal button_removed(removed_value: int, removed_position: Vector2)
 
-func _ready() -> void:
+func generate_cards() -> void:
 	var maxValue = range(0, columns * columns)
 	var ids = maxValue.duplicate(true)
 
@@ -23,7 +23,6 @@ func _ready() -> void:
 			instance.elementState = Element.ElementState.START
 
 		instance.id = "%d" % (id + 1)
-		indices.append(id + 1)
 		instance.button_selected.connect(_on_button_selected)
 		add_child(instance)
 
@@ -31,8 +30,8 @@ func _on_button_selected(id: String) -> void:
 	var id_int: int = id.to_int()
 
 	if id_int in range(1, (columns * columns) + 1):
-		var next_id = indices.find(id_int + 1)
-		var current_id = indices.find(id_int)
+		var next_id = get_element_index(id_int + 1)
+		var current_id = get_element_index(id_int)
 		var current_positon: Vector2 = get_children().get(current_id).button_pin.global_position
 
 		if not next_id < 0:
@@ -40,15 +39,21 @@ func _on_button_selected(id: String) -> void:
 			child_element.setButtonState(Element.ElementState.ACTIVE)
 
 		button_pressed.emit(id_int, current_positon)
-		print("Emitting signal with id = [%d] and current_positon = [%f, %f]" % [ id_int, current_positon.x, current_positon.y])
+
+func get_element_index(value: int) -> int:
+	for i in range(0, get_child_count()):
+		var element : Element = get_child(i)
+		
+		if element.label.text == "%d" % value:
+			return i
+	return -1
 
 func clear_last_child() -> void:
 	var child_count : int = get_child_count()
 	if child_count > 1:
-		var index = indices.find(child_count)
-		var id : Element = get_children().get(index)
-		button_removed.emit(child_count)
+		var index = get_element_index(child_count)
+		var id: Element = get_child(index)
 		if id != null:
 			id.drop_element()
-		indices.remove_at(index)
+		button_removed.emit(child_count)
 		columns = min(child_count - 1, columns)

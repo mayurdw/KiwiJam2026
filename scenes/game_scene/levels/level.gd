@@ -39,6 +39,7 @@ func _ready() -> void:
 	if not level_state.tutorial_read:
 		open_tutorials()
 	element_handler.columns = (int)(sqrt(tasks.size()))
+	element_handler.generate_cards()
 	goal.text = aim
 	current_task.text = aim
 	next_task.text = aim
@@ -54,13 +55,13 @@ func _complete_level() -> void:
 	for i in range(1, tasks.size()):
 		element_handler.clear_last_child()
 		await get_tree().create_timer(timeout).timeout
+		$Drop.pitch_scale = randf_range(0.8, 1.2)
+		$Drop.play()
 		if timeout > 0.05:
 			timeout -= 0.01
 	level_won.emit()
 
 func _on_grid_container_button_pressed(current_value: int, current_position: Vector2) -> void:
-	print("Got new value = %d, current_position = [%f, %f]" % [current_value, current_position.x, current_position.y])
-
 	if current_value == tasks.size():
 		_complete_level()
 	elif current_value in range(1, tasks.size()):
@@ -80,12 +81,9 @@ func _on_timer_timeout() -> void:
 	if remaining_time_sec <= 0:
 		level_lost.emit()
 	else:
-		print("Time Remaining %d" % remaining_time_sec)
 		progress_bar.value = remaining_time_sec
 		label.text = "%d:%d" % [remaining_time_sec / 60, remaining_time_sec % 60]
 		timer.start()
 
 func _on_element_handler_button_removed(removed_value: int) -> void:
-	print("Got value to remove %d" % removed_value)
-	
 	thread.clear_points()

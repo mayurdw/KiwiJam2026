@@ -7,16 +7,17 @@
 [node name="LevelWonWindow" unique_id=21713087 instance=ExtResource("1_218i2")]
 custom_minimum_size = Vector2(432, 240)
 script = ExtResource("2_2bpb8")
+ignore_siblings = false
 update_content = true
 text = "Level complete!"
 close_button_text = "Continue"
-title_visible = false
 
 [node name="TitleMargin" parent="ContentContainer/BoxContainer" parent_id_path=PackedInt32Array(394030069) index="0" unique_id=1262022916]
 visible = false
 
 [node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(590613964) index="0" unique_id=617407155]
-text = "Level complete!"
+text = "Wonder if there is more things
+After all, can't have it too easy"
 
 [node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(1413292752) index="0" unique_id=1371114575]
 vertical = false
@@ -49,15 +50,17 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
-text = "Exit to the main menu?"
+ignore_siblings = false
 title = "Confirm Exit"
+text = "Exit to the main menu?"
 
 [node name="ExitConfirmation" parent="." index="2" unique_id=1395779445 instance=ExtResource("3_ss43f")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Exit the game?"
+ignore_siblings = false
 title = "Confirm Exit"
+text = "Exit the game?"
 
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

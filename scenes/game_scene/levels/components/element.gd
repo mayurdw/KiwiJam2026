@@ -17,7 +17,6 @@ var id: String = ""
 @onready var button_pin: TextureRect = $MarginContainer/VBoxContainer/ButtonPin
 @onready var click: AudioStreamPlayer2D = $Click
 @onready var error: AudioStreamPlayer2D = $Error
-@onready var drop: AudioStreamPlayer2D = $Drop
 
 func _ready() -> void:
 	setButtonState(elementState)
@@ -60,12 +59,6 @@ func play_click() -> void:
 	click.pitch_scale = randf_range(0.8, 1.2)
 	click.play()
 
-func play_drop() -> void:
-	drop.pitch_scale = randf_range(0.8, 1.2)
-	drop.play()
-
 func drop_element() -> void:
-	play_drop()
-	await drop.finished
 	visible = false
 	call_deferred("queue_free")
