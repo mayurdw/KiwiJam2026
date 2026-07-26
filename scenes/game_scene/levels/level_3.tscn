@@ -1,19 +1,19 @@
-[gd_scene format=3 uid="uid://dewbw8rvk0opp"]
+[gd_scene format=3 uid="uid://dyavggoifp8l8"]
 
-[ext_resource type="Script" uid="uid://qi4qdfy4cte8" path="res://scenes/game_scene/levels/level.gd" id="1_yh8gr"]
-[ext_resource type="PackedScene" uid="uid://bkj1j0m42s0s" path="res://scenes/menus/background_scene.tscn" id="2_urmku"]
-[ext_resource type="LabelSettings" uid="uid://d0vululcgj74p" path="res://resources/labels/tasks.tres" id="3_t62rc"]
-[ext_resource type="PackedScene" uid="uid://dctd868bn0xgw" path="res://scenes/game_scene/levels/components/ElementHandler.tscn" id="4_xg5px"]
-[ext_resource type="LabelSettings" uid="uid://cjxa35kph5yoy" path="res://resources/labels/title.tres" id="5_hhxfa"]
-[ext_resource type="Script" uid="uid://bll85ag2um7hl" path="res://scenes/game_scene/tutorial_manager.gd" id="6_gkltp"]
-[ext_resource type="Shader" uid="uid://cvgexyohx3v6f" path="res://scripts/line_2d_shader.gdshader" id="8_7n1hf"]
-[ext_resource type="AudioStream" uid="uid://cnrn575s1ij8p" path="res://assets/sounds/Farm Frolics.ogg" id="9_olh7b"]
-[ext_resource type="AudioStream" uid="uid://ddafst1ryqvey" path="res://assets/sounds/Mission Plausible.ogg" id="10_slyx1"]
-[ext_resource type="AudioStream" uid="uid://de5mpog7f6yxj" path="res://assets/sounds/Wacky Waiting.ogg" id="11_vjvyu"]
-[ext_resource type="AudioStream" uid="uid://bgghpys1aik5n" path="res://assets/sounds/drop_002.ogg" id="12_urmku"]
+[ext_resource type="Script" uid="uid://qi4qdfy4cte8" path="res://scenes/game_scene/levels/level.gd" id="1_x342e"]
+[ext_resource type="PackedScene" uid="uid://bkj1j0m42s0s" path="res://scenes/menus/background_scene.tscn" id="2_s8hpv"]
+[ext_resource type="LabelSettings" uid="uid://d0vululcgj74p" path="res://resources/labels/tasks.tres" id="3_qqrq0"]
+[ext_resource type="PackedScene" uid="uid://dctd868bn0xgw" path="res://scenes/game_scene/levels/components/ElementHandler.tscn" id="4_u6nfu"]
+[ext_resource type="LabelSettings" uid="uid://cjxa35kph5yoy" path="res://resources/labels/title.tres" id="5_ps8dp"]
+[ext_resource type="Script" uid="uid://bll85ag2um7hl" path="res://scenes/game_scene/tutorial_manager.gd" id="6_ce5ly"]
+[ext_resource type="Shader" uid="uid://cvgexyohx3v6f" path="res://scripts/line_2d_shader.gdshader" id="8_3bm7s"]
+[ext_resource type="AudioStream" uid="uid://cnrn575s1ij8p" path="res://assets/sounds/Farm Frolics.ogg" id="9_oxc23"]
+[ext_resource type="AudioStream" uid="uid://ddafst1ryqvey" path="res://assets/sounds/Mission Plausible.ogg" id="10_v0u1s"]
+[ext_resource type="AudioStream" uid="uid://de5mpog7f6yxj" path="res://assets/sounds/Wacky Waiting.ogg" id="11_ivmic"]
+[ext_resource type="AudioStream" uid="uid://bgghpys1aik5n" path="res://assets/sounds/drop_002.ogg" id="12_52fqs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sycfm"]
-shader = ExtResource("8_7n1hf")
+shader = ExtResource("8_3bm7s")
 shader_parameter/frequency = 100.0
 shader_parameter/amplitude = 1000.0
 shader_parameter/speed = 10.0
@@ -26,9 +26,9 @@ shader_parameter/opacity = 1.0
 playback_mode = 1
 random_pitch = 1.0233738
 streams_count = 3
-stream_0/stream = ExtResource("9_olh7b")
-stream_1/stream = ExtResource("10_slyx1")
-stream_2/stream = ExtResource("11_vjvyu")
+stream_0/stream = ExtResource("9_oxc23")
+stream_1/stream = ExtResource("10_v0u1s")
+stream_2/stream = ExtResource("11_ivmic")
 
 [node name="Level2" type="Control" unique_id=266725257]
 layout_mode = 3
@@ -37,12 +37,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_yh8gr")
+script = ExtResource("1_x342e")
 next_level_path = "res://scenes/game_scene/levels/level_2.tscn"
-tasks = Array[String](["Renew your visa", "Your passport is expired. ", "Apply for new passport but you need police clearance.", "You never want to deal with police ever again. You submit your passport application.", "You got your passport but government has changed the visa rules. ", "You need a new medical exam.", "You have to wait two months for a medical. That's too long.", "You found an earlier date but you need to travel two hours to get there.", "Exam done but they found something in your X-Ray. ", "More tests, another two weeks but they issued your medical certificate.", "Your police clearance is expired. You need to do it again.", "You hope you got everything as you submit your application.", "They need to contact your employer. But your HR is on leave for another week.", "HR has responded to Immigration. ", "More visa changes announced. Hopefully it doesn't invalidate your application.", "It didn't. You got your visa."])
-aim = "Renew your visa"
+tasks = Array[String](["Be happy in life", "Your bus is late, you are going to be late to work.", "You get your morning coffee, but the cup slips and breaks.", "Your favourite lunch restaurant is closing down.", "Your work announces lay offs.", "You book some holidays but they were very expensive.", "Your bank account gets hacked. You spend two hours with customer care.", "Your friend gets promoted at work. You are happy for them. No really.", "You get your money back but it's time for taxes.", "You win a lottery but it's only $10", "Silksong releases. You are finally playing the game.", "Heavy rain floods your basement.", "Landlord will take care of the basement but they need to empty the house.", "You find a new favourite lunch restaurant.", "You find out your crush is getting married.", "Your sibling has a stroke. They are only 31.", "Your Sibling recovers but you can tell they are different.", "You get a new job offer but what about your friends.", "WHO announces a new pandemic. You are not going on a holiday.", "You learn to make bread. House smells nice.", "Your job offer is rescinded. You already gave your notice.", "You still have a job but you know another layoff is coming.", "You find a new job before layoffs start.", "You go on a holiday and find a cat following you.", "Your cat sleeps on your chest purring loudly."])
+aim = "Be happy in life"
 
-[node name="BackgroundTextureRect" parent="." unique_id=2051226168 instance=ExtResource("2_urmku")]
+[node name="BackgroundTextureRect" parent="." unique_id=2051226168 instance=ExtResource("2_s8hpv")]
 layout_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1269349753]
@@ -91,7 +91,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
 text = "1:00"
-label_settings = ExtResource("3_t62rc")
+label_settings = ExtResource("3_qqrq0")
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1909364306]
@@ -126,7 +126,7 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="ElementHandler" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=248420282 instance=ExtResource("4_xg5px")]
+[node name="ElementHandler" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=248420282 instance=ExtResource("4_u6nfu")]
 layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=850561156]
@@ -165,7 +165,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=693083116]
 layout_mode = 2
 text = "Goal"
-label_settings = ExtResource("5_hhxfa")
+label_settings = ExtResource("5_ps8dp")
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=2110952374]
 layout_mode = 2
@@ -173,7 +173,7 @@ layout_mode = 2
 [node name="Goal" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/Goal Container/MarginContainer/VBoxContainer3" unique_id=788707534]
 layout_mode = 2
 text = "To get driver's license"
-label_settings = ExtResource("3_t62rc")
+label_settings = ExtResource("3_qqrq0")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar" unique_id=1593541587]
 layout_mode = 2
@@ -201,7 +201,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=396243529]
 layout_mode = 2
 text = "Current"
-label_settings = ExtResource("5_hhxfa")
+label_settings = ExtResource("5_ps8dp")
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer2/MarginContainer/VBoxContainer4" unique_id=1378154174]
 layout_mode = 2
@@ -211,7 +211,7 @@ custom_minimum_size = Vector2(342, 26)
 custom_maximum_size = Vector2(342, -1)
 layout_mode = 2
 text = "1. Online Application"
-label_settings = ExtResource("3_t62rc")
+label_settings = ExtResource("3_qqrq0")
 autowrap_mode = 3
 
 [node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container" unique_id=1177198913]
@@ -230,7 +230,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=1296914000]
 layout_mode = 2
 text = "Next"
-label_settings = ExtResource("5_hhxfa")
+label_settings = ExtResource("5_ps8dp")
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer/MarginContainer/HBoxContainer/MarginContainer2/Task Sidebar/MarginContainer/Tasks Container/PanelContainer3/MarginContainer/VBoxContainer5" unique_id=1712499982]
 layout_mode = 2
@@ -240,12 +240,12 @@ custom_minimum_size = Vector2(342, 26)
 custom_maximum_size = Vector2(342, -1)
 layout_mode = 2
 text = "2. Requires Identity Proof"
-label_settings = ExtResource("3_t62rc")
+label_settings = ExtResource("3_qqrq0")
 autowrap_mode = 3
 
 [node name="TutorialManager" type="Node" parent="." unique_id=448883273]
 unique_name_in_owner = true
-script = ExtResource("6_gkltp")
+script = ExtResource("6_ce5ly")
 
 [node name="Thread" type="Line2D" parent="." unique_id=1364888161]
 material = SubResource("ShaderMaterial_sycfm")
@@ -264,7 +264,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="Drop" type="AudioStreamPlayer2D" parent="." unique_id=164941498]
-stream = ExtResource("12_urmku")
+stream = ExtResource("12_52fqs")
 bus = &"Music"
 
 [connection signal="button_pressed" from="VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/ElementHandler" to="." method="_on_grid_container_button_pressed"]
